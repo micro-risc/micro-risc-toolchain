@@ -1,4 +1,5 @@
 
 #include "registers.asm"
-#include "compressed/alu.asm"
-#include "compressed/control.asm"
+#include "alu.asm"
+#include "mem.asm"
+#include "flow.asm"

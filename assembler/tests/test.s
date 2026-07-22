@@ -1,5 +1,4 @@
-c.add r2, r1
-c.addi r4, 0x1f
+add %a0, %s0, %t0
 
 label:
-    c.jmp label
+    bzs label
