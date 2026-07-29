@@ -1,4 +1,5 @@
 #include "tokenizer.h"
+#include "common.h"
 
 #include <stdio.h>
 #include <stdlib.h>
@@ -25,17 +26,17 @@ void emitTokStr(TokenType token, char str[TOKEN_BUF_LEN]) {
 	tokenStreamLen++;
 }
 
-int isSpecial(int c) {
-	if (c == EOF) return 0;
+bool isSpecial(int c) {
+	if (c == EOF) return false;
 	switch ((char) c) {
-		case '.': return 1; break;
-		case ',': return 1; break;
-		case ':': return 1; break;
-		case '(': return 1; break;
-		case ')': return 1; break;
-		case '$': return 1; break;
-		case '%': return 1; break;
-		default: return 0; 	break;
+		case '.': return true; break;
+		case ',': return true; break;
+		case ':': return true; break;
+		case '(': return true; break;
+		case ')': return true; break;
+		case '$': return true; break;
+		case '%': return true; break;
+		default: return false; 	break;
 	}	
 
 	return 0;
@@ -54,8 +55,8 @@ Token* tokenize(FILE* fptr) {
 
 		switch ((char) c) {
 			case '.': emitTok(TOKEN_DOT); 		break;
-			case ',': emitTok(TOKEN_COMMA); 		break;
-			case ':': emitTok(TOKEN_COLON); 		break;
+			case ',': emitTok(TOKEN_COMMA); 	break;
+			case ':': emitTok(TOKEN_COLON); 	break;
 			case '(': emitTok(TOKEN_LPAREN); 	break;
 			case ')': emitTok(TOKEN_RPAREN); 	break;
 			case '$': emitTok(TOKEN_DOLLAR); 	break;
